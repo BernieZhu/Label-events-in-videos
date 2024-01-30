@@ -1,0 +1,138 @@
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+<section class="container" id="Survey" style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:0.9em;">
+<div class="row col-xs-12 col-md-12" style="margin: 300px auto 0;"><!-- Instructions -->
+
+<div class="panel-body"><!-- <p dir="ltr"></p> --><noscript><p dir="ltr"><em><span style="color:#FF0000;">This HIT requires Javascript to be enabled in your browser. Please enable Javascript and reload the HIT or return the task.</span></em></p></noscript>
+</div>
+</div>
+</div>
+<!-- End Instructions --><!-- Survey Body -->
+<section>
+
+<div id="top">
+<div id="videoplayer">
+<video controls="" height="300" id="thevideo" width="550"><source src="${url}" type="video/mp4" />
+<h2><font color="red">This HIT requires html5 video support and your current browser does not support this. Please return this HIT.</font></h2>
+</video>
+</div>
+</div>
+
+<fieldset><script>
+var atemplate = '<div id="annotateNR">' +
+'<div class="video_controls_bar">' +
+'<p><b>Please annotate the No.NR event in the video.</b></p>' +
+'' +
+'<div><b><em>Startpoint</em></b> <input class="fullwidth" id="seeksliderNRstart" max="100" min="0" step=".5" type="range" value="0" /><textarea class="right sidebox" cols="50" id="startNRbox" name="startNR" rows="1"></textarea></div>' +
+'' +
+'<div><b><em>Endpoint&nbsp;</em></b> <input class="fullwidth" id="seeksliderNRend" max="100" min="0" step=".5" type="range" value="0" /><textarea class="right sidebox" cols="50" id="endNRbox" name="endNR" rows="1"></textarea></div>' +
+'' +
+'<div>Event name: <textarea class="sidebox" cols="100" name="eventNR" rows="1"></textarea> Food type: <textarea class="sidebox" cols="100" name="objectNR" rows="1"></textarea></div>' +
+'' +
+'<div> <class="checkbox"> <label> Bite Acquisition Success? <input name="baNR" type="checkbox" value="succ"/></label> <class="checkbox"><label> Bite Transfer Success? <input name="btNR" type="checkbox" value="succ"/></label>' +
+'' +
+' Is this a Failure? <select name="succNR" id="succNR"><option value="No">No</option><option value="VIDEO_STREAM_FAILURE">VIDEO_STREAM_FAILURE</option><option value="ROBOT_ACTION_FAILURE">ROBOT_ACTION_FAILURE</option></select>' +
+'' +
+' Intervention: <textarea class="sidebox" cols="100" name="intvNR" rows="1"></textarea> </div>' +
+'' +
+'<div>Notes: <textarea class="sidebox" cols="100" name="notesNR" rows="1"></textarea> </div>' +
+'' +
+'</div></div> ' +
+'' +
+'</div></div> ' +
+''+
+'</div></div> ' +
+'' +
+'</div>' +
+'</div>';
+
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+var MAX = 20;
+for(var i = 0; i < MAX; i++){
+    document.write(atemplate.replaceAll("NR",i+1));
+}
+</script><script type='text/javascript'>
+var vid;
+function intializePlayer(){
+    // Set object references
+    vid = document.getElementById("thevideo");
+
+    sliderstarts = new Array(MAX);
+    sliderends = new Array(MAX);
+
+    for(var i = 0; i < MAX; i++){
+    sliderstarts[i] = document.getElementById("seeksliderNRstart".replace("NR",i+1));
+    sliderstarts[i].addEventListener("input",vidSeek(sliderstarts[i],"startNRbox".replace("NR",i+1)),false);
+    sliderstarts[i].addEventListener("change",vidSeek(sliderstarts[i],"startNRbox".replace("NR",i+1)),false);
+    sliderends[i] = document.getElementById("seeksliderNRend".replace("NR",i+1));
+    sliderends[i].addEventListener("input",vidSeek(sliderends[i],"endNRbox".replace("NR",i+1)),false);
+    sliderends[i].addEventListener("change",vidSeek(sliderends[i],"endNRbox".replace("NR",i+1)),false);
+    }
+}
+window.onload = intializePlayer;
+function vidSeek(theelement,boxname){
+    return function() {
+        var seekto = vid.duration * (theelement.value / 100);
+        vid.currentTime = seekto;
+        vid.pause();
+        var sec = seekto.toFixed(1);
+        document.getElementById(boxname).value = sec.toString();
+    }
+}
+</script><script type='text/javascript'>
+
+</script>
+
+<fieldset>
+<div><b>(Optional)&nbsp;Write any feedback to improve this HIT/Interface: </b>(Just leave empty&nbsp;if you do not have any.&nbsp;Send a&nbsp;message if you need a reply.)<br />
+<textarea class="form-control" cols="250" name="Comments" rows="2"></textarea></div>
+</fieldset>
+</fieldset>
+</section>
+<!-- End Survey Body --></section>
+<!-- close container -->
+<style type="text/css">fieldset {
+    padding: 10px;
+    background:#f9f9f9;
+    border-radius:5px;
+    margin-bottom:5px;
+}
+div#videoplayer{ 
+    width:550px; background:#000; margin:0px auto;
+}
+.video_controls_bar{ background: #ccc; padding:10px; margin-top:.5em;}
+.fullwidth {
+    width: 70%;
+}
+.sidebox {
+    width: 10%
+}
+.left {
+    float: left
+}
+.right {
+    float: right
+}
+div#top{
+    position: fixed;
+    top:1px;
+    right:0;
+    left:0;
+    margin-right: auto;
+    margin-left: auto;
+}
+.theoptions {
+    display:none;
+}
+input[type=checkbox]:checked ~ .theoptions {
+    display:block;
+}
+label {
+    cursor:pointer;
+    font-weight:normal;
+}
+</style>
+
