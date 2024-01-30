@@ -16,7 +16,7 @@
 <!-- <video controls="" height="300" id="thevideo" width="550"><source src="https://www.cs.cmu.edu/~cga/tmp-public/wpi-cmu-drc1-small.mp4" type="video/mp4" /> -->
 <h2><font color="red">This HIT requires html5 video support and your current browser does not support this. Please return this HIT.</font></h2>
 </video>
-<div><button id="timestampButton">Get Current Timestamp</button> <a id="timestampDisplay"></a></div>
+<div><button id="timestampButton">Get Current Timestamp</button> <textarea class="sidebox" cols="50" id="timestamp" name="timestampDisplay" rows="1"></textarea></div>
 </div>
 </div>
 
@@ -31,7 +31,7 @@ var atemplate = '<div id="annotateNR">' +
 '' +
 '<div>Timestamp: <textarea class="sidebox" cols="100" name="timeNR" rows="1"></textarea> Event name: <textarea class="sidebox" cols="100" name="eventNR" rows="1"></textarea> Food type: <textarea class="sidebox" cols="100" name="objectNR" rows="1"></textarea> </div>' +
 '' +
-'<div>Successful bite <select name="succbiteNR" id="succbiteNR"><option value="NA">NA</option><option value="BITE_SELECTION_INITIATED">BITE_SELECTION_INITIATED</option><option value="BITE_ACQUISITION_INITIATED">BITE_ACQUISITION_INITIATED</option><option value="BITE_ACQUISITION_MOTION_START">BITE_ACQUISITION_MOTION_START</option><option value="BITE_ACQUISITION_MOTION_END">BITE_ACQUISITION_MOTION_END</option><option value="MOVE_TO_STAGING_INITIATED">MOVE_TO_STAGING_INITIATED</option><option value="MOVE_TO_STAGING_MOTION_START">MOVE_TO_STAGING_MOTION_START</option><option value="MOVE_TO_STAGING_MOTION_END">MOVE_TO_STAGING_MOTION_END</option><option value="MOVE_TO_MOUTH_MOTION_START">MOVE_TO_MOUTH_MOTION_START</option><option value="MOVE_TO_MOUTH_MOTION_END">MOVE_TO_MOUTH_MOTION_END</option><option value="MOVE_FROM_MOUTH_INITIATED">MOVE_FROM_MOUTH_INITIATED</option><option value="MOVE_FROM_MOUTH_MOTION_START">MOVE_FROM_MOUTH_MOTION_START</option><option value="MOVE_FROM_MOUTH_MOTION_END">MOVE_FROM_MOUTH_MOTION_END</option><option value="MOVE_ABOVE_PLATE_MOTION_START">MOVE_ABOVE_PLATE_MOTION_START</option><option value="MOVE_ABOVE_PLATE_MOTION_END">MOVE_ABOVE_PLATE_MOTION_END</option></select> Bite acquisition fails <select name="succbiteNR" id="btacfailNR"><option value="NA">NA</option><option value="MOVE_ABOVE_PLATE_INITIATED">MOVE_ABOVE_PLATE_INITIATED</option><option value="MOVE_ABOVE_PLATE_MOTION_START">MOVE_ABOVE_PLATE_MOTION_START</option><option value="MOVE_ABOVE_PLATE_MOTION_END">MOVE_ABOVE_PLATE_MOTION_END</option><option value="BITE_SELECTION_INITIATED">BITE_SELECTION_INITIATED</option><option value="BITE_ACQUISITION_INITIATED">BITE_ACQUISITION_INITIATED</option><option value="BITE_ACQUISITION_MOTION_START">BITE_ACQUISITION_MOTION_START</option><option value="BITE_ACQUISITION_MOTION_END">BITE_ACQUISITION_MOTION_END</option></select></div>' +
+'<div>Successful bite <select name="succbiteNR" id="succbiteNR"><option value="NA">NA</option><option value="BITE_SELECTION_INITIATED">BITE_SELECTION_INITIATED</option><option value="BITE_ACQUISITION_INITIATED">BITE_ACQUISITION_INITIATED</option><option value="BITE_ACQUISITION_MOTION_START">BITE_ACQUISITION_MOTION_START</option><option value="BITE_ACQUISITION_MOTION_END">BITE_ACQUISITION_MOTION_END</option><option value="MOVE_TO_STAGING_INITIATED">MOVE_TO_STAGING_INITIATED</option><option value="MOVE_TO_STAGING_MOTION_START">MOVE_TO_STAGING_MOTION_START</option><option value="MOVE_TO_STAGING_MOTION_END">MOVE_TO_STAGING_MOTION_END</option><option value="MOVE_TO_MOUTH_MOTION_START">MOVE_TO_MOUTH_MOTION_START</option><option value="MOVE_TO_MOUTH_MOTION_END">MOVE_TO_MOUTH_MOTION_END</option><option value="MOVE_FROM_MOUTH_INITIATED">MOVE_FROM_MOUTH_INITIATED</option><option value="MOVE_FROM_MOUTH_MOTION_START">MOVE_FROM_MOUTH_MOTION_START</option><option value="MOVE_FROM_MOUTH_MOTION_END">MOVE_FROM_MOUTH_MOTION_END</option><option value="MOVE_ABOVE_PLATE_MOTION_START">MOVE_ABOVE_PLATE_MOTION_START</option><option value="MOVE_ABOVE_PLATE_MOTION_END">MOVE_ABOVE_PLATE_MOTION_END</option></select> Bite acquisition fails <select name="bitefailNR" id="btacfailNR"><option value="NA">NA</option><option value="MOVE_ABOVE_PLATE_INITIATED">MOVE_ABOVE_PLATE_INITIATED</option><option value="MOVE_ABOVE_PLATE_MOTION_START">MOVE_ABOVE_PLATE_MOTION_START</option><option value="MOVE_ABOVE_PLATE_MOTION_END">MOVE_ABOVE_PLATE_MOTION_END</option><option value="BITE_SELECTION_INITIATED">BITE_SELECTION_INITIATED</option><option value="BITE_ACQUISITION_INITIATED">BITE_ACQUISITION_INITIATED</option><option value="BITE_ACQUISITION_MOTION_START">BITE_ACQUISITION_MOTION_START</option><option value="BITE_ACQUISITION_MOTION_END">BITE_ACQUISITION_MOTION_END</option></select></div>' +
 '' +
 '<div> <class="checkbox"> <label> Bite Acquisition Success? <input name="baNR" type="checkbox" value="succ"/></label> <class="checkbox"><label> Bite Transfer Success? <input name="btNR" type="checkbox" value="succ"/></label>' +
 '' +
@@ -87,16 +87,15 @@ function vidSeek(theelement,boxname){
     }
 }
 </script><script type='text/javascript'>
-
-</script>
-
-<script>
+    vid = document.getElementById("thevideo");
     document.getElementById("timestampButton").addEventListener("click", function() {
-    var video = document.getElementById("thevideo");
-    var currentTime = video.currentTime;
-    document.getElementById("timestampDisplay").innerHTML = currentTime.toFixed(1);
+        document.getElementById("timestamp").value = vid.currentTime.toFixed(1).toString();
     });
 </script>
+
+<fieldset>
+    <div><b>(Optional)&nbsp;Write any feedback to improve this HIT/Interface: </b>(Just leave empty&nbsp;if you do not have any.&nbsp;Send a&nbsp;message if you need a reply.)<br />
+    <textarea class="form-control" cols="250" name="Comments" rows="2"></textarea></div>
 </fieldset>
 </section>
 <!-- End Survey Body --></section>
