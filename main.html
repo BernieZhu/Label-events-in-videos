@@ -16,6 +16,7 @@
 <video controls="" height="300" id="thevideo" width="550"><source src="https://www.cs.cmu.edu/~cga/tmp-public/wpi-cmu-drc1-small.mp4" type="video/mp4" />
 <h2><font color="red">This HIT requires html5 video support and your current browser does not support this. Please return this HIT.</font></h2>
 </video>
+<div><button id="timestampButton">Get Current Timestamp</button> <a id="timestampDisplay"></a></div>
 </div>
 </div>
 
@@ -28,7 +29,7 @@ var atemplate = '<div id="annotateNR">' +
 '' +
 '<div><b><em>Endpoint&nbsp;</em></b> <input class="fullwidth" id="seeksliderNRend" max="100" min="0" step=".5" type="range" value="0" /><textarea class="right sidebox" cols="50" id="endNRbox" name="endNR" rows="1"></textarea></div>' +
 '' +
-'<div>Event name: <textarea class="sidebox" cols="100" name="eventNR" rows="1"></textarea> Food type: <textarea class="sidebox" cols="100" name="objectNR" rows="1"></textarea></div>' +
+'<div>Timestamp: <textarea class="sidebox" cols="100" name="timeNR" rows="1"></textarea> Event name: <textarea class="sidebox" cols="100" name="eventNR" rows="1"></textarea> Food type: <textarea class="sidebox" cols="100" name="objectNR" rows="1"></textarea></div>' +
 '' +
 '<div> <class="checkbox"> <label> Bite Acquisition Success? <input name="baNR" type="checkbox" value="succ"/></label> <class="checkbox"><label> Bite Transfer Success? <input name="btNR" type="checkbox" value="succ"/></label>' +
 '' +
@@ -51,7 +52,7 @@ String.prototype.replaceAll = function(search, replacement) {
     var target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
 };
-var MAX = 20;
+var MAX = 50;
 for(var i = 0; i < MAX; i++){
     document.write(atemplate.replaceAll("NR",i+1));
 }
@@ -87,10 +88,13 @@ function vidSeek(theelement,boxname){
 
 </script>
 
-<fieldset>
-<div><b>(Optional)&nbsp;Write any feedback to improve this HIT/Interface: </b>(Just leave empty&nbsp;if you do not have any.&nbsp;Send a&nbsp;message if you need a reply.)<br />
-<textarea class="form-control" cols="250" name="Comments" rows="2"></textarea></div>
-</fieldset>
+<script>
+    document.getElementById("timestampButton").addEventListener("click", function() {
+    var video = document.getElementById("thevideo");
+    var currentTime = video.currentTime;
+    document.getElementById("timestampDisplay").innerHTML = currentTime.toFixed(1);
+    });
+</script>
 </fieldset>
 </section>
 <!-- End Survey Body --></section>
