@@ -1,5 +1,38 @@
 # Label-events-in-videos
 
+This repository is based on Gunnar's previous work.
+
+======
+
+MTurk Interfaces 
+Gunnar A. Sigurdsson
+2016
+
+
+For work used in:
+
+@inproceedings{sigurdsson2016much,
+author = {Gunnar A. Sigurdsson and Olga Russakovsky and Ali Farhadi and Ivan Laptev and Abhinav Gupta},
+title = {Much Ado About Time: Exhaustive Annotation of Temporal Data},
+booktitle={HCOMP},
+year = {2016},
+url = {http://arxiv.org/abs/1607.07429},
+pdf = {http://arxiv.org/pdf/1607.07429.pdf},
+web = {http://allenai.org/plato/charades/},
+}
+
+and
+
+@inproceedings{sigurdsson2016hollywood,
+author = {Gunnar A. Sigurdsson and G{\"u}l Varol and Xiaolong Wang and Ali Farhadi and Ivan Laptev and Abhinav Gupta},
+title={Hollywood in Homes: Crowdsourcing Data Collection for Activity Understanding},
+booktitle={European Conference on Computer Vision},
+year={2016},
+pdf = {http://arxiv.org/pdf/1604.01753.pdf},
+poster = {http://www.eccv2016.org/files/posters/P-1A-31.pdf},
+web = {http://allenai.org/plato/charades/}
+}
+
 The collection process followed these approximate steps for each of these tasks:
 
 1. Go to https://requester.mturk.com (https://requestersandbox.mturk.com for test)
